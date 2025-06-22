@@ -1,0 +1,12 @@
+{
+  "routes": [
+    {
+      "src": "/uv/(.*)",
+      "dest": "/uv/uv.sw.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}
