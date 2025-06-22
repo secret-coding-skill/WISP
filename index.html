@@ -5,10 +5,17 @@
   <title>Ultraviolet Proxy</title>
 </head>
 <body>
+  <script src="/uv/uv.bundle.js"></script>
   <script src="/uv/uv.client.js"></script>
   <script>
+    // Ensure __uv is defined before using it
+    if (typeof __uv === 'undefined') {
+      alert('Failed to load Ultraviolet core scripts.');
+      throw new Error('Ultraviolet bundle not loaded');
+    }
+
     navigator.serviceWorker.register('/uv/uv.sw.js').then(() => {
-      const url = prompt('Enter a URL to proxy:', 'https://example.com'); 
+      const url = prompt('Enter a URL:', 'https://example.com'); 
       location.href = '/uv/' + __uv.$u(url);
     }).catch(e => {
       alert('Service Worker registration failed: ' + e);
