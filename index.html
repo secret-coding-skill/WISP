@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ultraviolet Proxy</title>
+</head>
+<body>
+  <script src="/uv/uv.client.js"></script>
+  <script>
+    navigator.serviceWorker.register('/uv/uv.sw.js').then(() => {
+      const url = prompt('Enter a URL to proxy:', 'https://example.com'); 
+      location.href = '/uv/' + __uv.$u(url);
+    }).catch(e => {
+      alert('Service Worker registration failed: ' + e);
+    });
+  </script>
+</body>
+</html>
